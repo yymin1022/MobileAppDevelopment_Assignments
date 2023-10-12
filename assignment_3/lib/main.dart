@@ -62,14 +62,11 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         body: TabBarView(
           children: [
-            GridView.builder(
-              itemCount: 16,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3
+            GridView.count(
+              crossAxisCount: 3,
+              children: List.generate(16, (index) =>
+                Image(image: AssetImage("assets/dog_${index + 1}.jpeg"))
               ),
-              itemBuilder: (BuildContext context, int index) {
-                return Image(image: AssetImage(getDogPictures()[index]));
-              }
             ),
             Column(
               children: [
@@ -145,7 +142,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: Container(
                         height: 100.0,
                         color: Colors.red,
-                        child: Center(child: Text("50%"))
+                        child: const Center(child: Text("50%"))
                       )
                     ),
                     Expanded(
@@ -153,7 +150,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         child: Container(
                             height: 100.0,
                             color: Colors.blue,
-                            child: Center(child: Text("20%"))
+                            child: const Center(child: Text("20%"))
                         )
                     ),
                     Expanded(
@@ -161,7 +158,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         child: Container(
                             height: 100.0,
                             color: Colors.green,
-                            child: Center(child: Text("20%"))
+                            child: const Center(child: Text("20%"))
                         )
                     ),
                   ],
@@ -176,14 +173,4 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
-}
-
-List<String> getDogPictures() {
-  List<String> dogPics = [];
-  
-  for(var i = 1; i <= 16; i++){
-    dogPics.add("assets/dog_$i.jpeg");
-  }
-  
-  return dogPics;
 }
